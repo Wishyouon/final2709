@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Online tool to summarize transcript of an eligible YouTube video. The video should have well formatted closed-captions to perform summarization by various techniques.">
+  <meta name="robots" content="index,follow" />
+  <meta property='og:title' content="YouTube Transcript Summarizer | Web Summarizer" />
+  <meta property='og:image' content='y1.png' />
+  <title>YouTube Transcript Summarizer | Web Summarizer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@300;400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/static/web.css">
+  <link src="y1.png" rel="icon">
+</head>
+
+<body>
+  
+  <!-- Main content -->
+  <main>
+    <!-- Header section -->
+    <header>
+      <div class="container">
+        <div class="container">
+          <div class="logo">
+            <img src="{{ url_for('static', filename='images/y1.png') }}" alt="youtube icon">
+            <h1>Read the Videos</h1>
+          </div>
+         <!-- add navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">YouTube Transcript Summarizer</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/privacy-policy">Privacy Policy</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+
+      </div>
+    </header>
+
+    <!-- Hero section -->
+ <!-- Hero section -->
+<section class="hero">
+  <div class="container">
+    <h2>Summarize YouTube Transcripts Quickly and Easily</h2>
+    <form method="POST" action="/">
+      <label for="vid_id">Enter the YouTube video ID:</label>
+      <input type="text" name="vid_id" placeholder="e.g. https://www.youtube.com/watch?v=7OAHAI2TQUA">
+      <label for="summarization_percentage">Select the summarization percentage:</label>
+      <select name="summarization_percentage" id="summarization_percentage">
+        <option value="10">10%</option>
+        <option value="20">20%</option>
+        <option value="30" selected>30%</option>
+        <option value="40">40%</option>
+        <option value="50">50%</option>
+      </select>
+      
+      <button type="submit">Get Transcript</button>
+    </form>
+  </div>
+</section>
+
+
+    <!-- How it works section -->
+    <section class="how-it-works">
+      <div class="user-guide">
+        <h2>YouTube Transcript Summarizer User Guide</h2>
+        <p>The YouTube Transcript Summarizer allows you to quickly and easily get a summarized version of a YouTube video's transcript. You can then copy the transcript, download it, or listen to it.</p>
+        <h3>Getting a Summarized Transcript</h3>
+        <ol>
+          <li>Go to the YouTube video you want to summarize.</li>
+          <li>Click the "Share" button below the video.</li>
+          <li>Click the "Copy" button to copy the video's URL.</li>
+          <li>Paste the URL into the YouTube Transcript Summarizer.</li>
+          <li>Select the desired percentage for the summary, such as 10%, 20%, or 30%.</li>
+          <li>Click the "Summarize" button.</li>
+          <li>Wait for the summarization process to complete.</li>
+          <li>View the summarized transcript.</li>
+        </ol>
+        <h3>Copying the Transcript</h3>
+        <p>To copy the transcript, simply select the text and use the copy function on your device.</p>
+        <h3>Downloading the Transcript</h3>
+        <p>To download the transcript, click the "Download" button and save the file to your device.</p>
+        <h3>Listening to the Transcript</h3>
+        <p>To listen to the transcript, click the "Listen" button and the summarized transcript will be read out loud to you.</p>
+      </div>
+      
+      
+
+      <footer>
+        <div>
+          <p>&copy; 2023 Read the Videos. All Rights Reserved.</p>
+        </div>
+      </footer>

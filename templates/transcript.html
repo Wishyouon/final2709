@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+      content="Online tool to summarize transcript of an eligible YouTube `. The video should have well formatted closed-captions to perform summarization by various techniques.">
+    <meta name="robots" content="index,follow" />
+    <meta property='og:title' content="YouTube Transcript Summarizer | Web Summarizer" />
+    <meta property='og:image' content='y1.png' />
+    <title>YouTube Transcript Summarizer | Web Summarizer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Roboto:wght@300;400&display=swap"
+      rel="stylesheet">
+    <link rel="stylesheet" href="/static/web.css">
+    <link src="y1.png" rel="icon">
+    <script>
+      function copyTranscript() {
+        var transcript = document.getElementById("transcript").textContent;
+        navigator.clipboard.writeText(transcript);
+        alert("Transcript copied to clipboard!");
+      }
+    
+      function downloadTranscript() {
+        var transcript = document.getElementById("transcript").textContent;
+        var blob = new Blob([transcript], { type: "text/plain" });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement("a");
+        link.setAttribute("href", url);
+        link.setAttribute("download", "transcript.txt");
+        link.click();
+        URL.revokeObjectURL(url);}
+
+        var isSpeaking = false;
+        var utterance = new SpeechSynthesisUtterance();
+        utterance.rate = 1.5;
+
+        function toggleSpeech() {
+          var transcript = document.getElementById("transcript").innerText;
+
+          if (!isSpeaking) {
+            isSpeaking = true;
+            utterance.text = transcript;
+            window.speechSynthesis.speak(utterance);
+            document.getElementById("readButton").innerHTML = "Pause";
+          } else {
+            isSpeaking = false;
+            window.speechSynthesis.cancel();
+            document.getElementById("readButton").innerHTML = "Read Transcript";
+          }
+        }
+
+        utterance.onend = function() {
+          isSpeaking = false;
+          document.getElementById("readButton").innerHTML = "Read Transcript";
+        };
+        
+
+
+    </script>
+    <meta charset="UTF-8">
+    <title>YouTube Transcript Summarizer</title>
+    
+  </head>
+  <body>
+    
+  <!-- Main content -->
+  <main>
+    <!-- Header section -->
+    <header>
+      <div class="container">
+        <div class="container">
+          <div class="logo">
+            <img src="{{ url_for('static', filename='images/y1.png') }}" alt="youtube icon">
+            <h1>Read the Videos</h1>
+          </div>
+         <!-- add navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">YouTube Transcript Summarizer</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/privacy-policy">Privacy Policy</a>
+        </li>
+        
+      </ul>
+    </div>
+  </nav>
+
+      </div>
+    </header>
+    <div class="container">
+      <h1>YouTube Transcript Summarizer</h1>
+      <form method="post" action="/">
+        <label for="vid_id">Enter a YouTube video link:</label><br>
+        <input type="text" id="vid_id" name="vid_id" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><br>
+        <select name="summarization_percentage" id="summarization_percentage">
+          <option value="10">10%</option>
+          <option value="20">20%</option>
+          <option value="30" selected>30%</option>
+          <option value="40">40%</option>
+          <option value="50">50%</option>
+        </select>
+        <input type="submit" value="Get Transcript">
+      </form>
+      {% if result %}
+      <h2>{{ title }}</h2>
+      <iframe id="video" src="https://www.youtube.com/embed/{{ vid_id }}" frameborder="0" allowfullscreen width="800" height="450"></iframe>
+      <h3>Transcript:</h3>
+      <div id="transcript">{{ result }}</div>
+      <button onclick="copyTranscript()">Copy Transcript</button><br><br>
+      <button onclick="downloadTranscript()">Download Transcript</button><br><br>
+      <button onclick="toggleSpeech()">Listen Transcript</button><br><br>
+
+      <script>
+        function summarizeTranscript() {
+          // code to summarize transcript
+        }
+      </script>
+      
+
+      {% endif %}
+    </div>
+    <footer>
+      <div class="container">
+        <p>&copy; 2023 Read the Videos. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
