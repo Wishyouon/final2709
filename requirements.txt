@@ -1,4 +1,5 @@
-﻿blinker==1.6.2
+gunicorn
+blinker==1.6.2
 certifi==2023.7.22
 charset-normalizer==3.2.0
 click==8.1.6
@@ -21,4 +22,4 @@ tqdm==4.66.1
 urllib3==2.0.4
 Werkzeug
 youtube-transcript-api==0.6.1
-gunicorn
+
