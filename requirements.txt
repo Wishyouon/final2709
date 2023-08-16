@@ -21,3 +21,4 @@ tqdm==4.66.1
 urllib3==2.0.4
 Werkzeug
 youtube-transcript-api==0.6.1
+gunicorn
