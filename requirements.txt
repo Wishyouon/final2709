@@ -14,7 +14,7 @@ numpy
 pytube==15.0.0
 regex==2023.8.8
 requests==2.31.0
-scipy==1.11.1
+scipy
 summa==1.2.0
 summarizer==0.0.7
 tqdm==4.66.1
